@@ -1,0 +1,27 @@
+@use "../abstracts/mixins";
+
+.masonry {
+  --spacing: 8px;
+  --columns: 3;
+  &__grid {
+    width: 100%;
+  }
+  &__sizer,
+  &__item {
+    width: calc(100% / var(--columns));
+    padding: calc(var(--spacing) / 2);
+    @include mixins.screen(lg) {
+      --columns: 2;
+    }
+    @include mixins.screen(md) {
+      --columns: 1;
+    }
+  }
+  &__img {
+    width: 100%;
+    transition: filter 0.3s ease;
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
+}

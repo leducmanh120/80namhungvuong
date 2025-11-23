@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Funky Signature';
+  src: url('NVNFunkySignature-2.woff2') format('woff2'), url('NVNFunkySignature-2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

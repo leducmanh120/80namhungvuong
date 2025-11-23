@@ -1,0 +1,47 @@
+@use '../abstracts/mixins';
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+b {
+  font-weight: 600;
+}
+
+i {
+  font-style: italic;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.container {
+  padding-inline: 0;
+  @include mixins.screen(sm) {
+    padding-inline: 18px;
+  }
+}
+
+.icon {
+  color: var(--color-text);
+}
+
+.overlay {
+  position: fixed;
+  z-index: 99;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-bg-dark) 50%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition: 0.3s ease;
+}

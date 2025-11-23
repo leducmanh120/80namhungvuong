@@ -1,0 +1,22 @@
+@use "../abstracts/mixins";
+@use "./home";
+
+.blog {
+  padding-block: 40px 30px;
+  &__heading {
+    max-width: 960px;
+    margin-inline: auto;
+    margin-bottom: 24px;
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    @include mixins.screen(lg) {
+      text-align: initial;
+    }
+  }
+  &__row {
+    --grid-gutter-x: 20px;
+    --grid-gutter-y: var(--grid-gutter-x);
+  }
+}

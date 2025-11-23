@@ -1,0 +1,32 @@
+@use "../abstracts/mixins";
+
+.home {
+  &__container {
+    margin-top: 40px;
+    &--alt {
+      background: var(--color-bg-alt);
+    }
+    &--padded {
+      padding-block: 40px;
+    }
+    &--padded-top {
+      padding-top: 40px;
+    }
+    &--padded-bottom {
+      padding-bottom: 40px;
+    }
+  }
+  &__heading {
+    position: relative;
+    margin-bottom: 16px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  &__desc {
+    margin-bottom: 24px;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+}
