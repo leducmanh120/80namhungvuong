@@ -1,0 +1,81 @@
+@use "../abstracts/mixins";
+
+.post {
+  width: 800px;
+  margin-inline: auto;
+  @include mixins.screen(lg) {
+    width: initial;
+  }
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100rem;
+    object-fit: cover;
+  }
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  &__author-name {
+    font-weight: 600;
+  }
+  &__date {
+    color: var(--color-text-muted);
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-style: italic;
+  }
+  &__heading {
+    margin-block: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    &--lv2 {
+      font-size: 2.2rem;
+      line-height: 1.4;
+      cursor: pointer;
+      &::before {
+        content: "#";
+        padding-right: 6px;
+        color: var(--color-primary);
+      }
+    }
+    &--lv3 {
+      font-size: 1.8rem;
+      line-height: 1.4;
+    }
+  }
+  &__excerpt,
+  &__paragraph {
+    margin-block: 16px;
+    line-height: 1.6;
+  }
+  &__excerpt {
+    font-weight: 600;
+    font-style: italic;
+  }
+  &__quote {
+    padding-left: 20px;
+    border-left: 4px solid var(--color-primary);
+    background-color: var(--color-bg);
+  }
+  &__quote &__paragraph {
+    padding-block: 8px;
+  }
+  &__img {
+    margin-block: 24px;
+    border-radius: 6px;
+  }
+  &__highlight {
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-primary);
+    background: var(--color-bg);
+    font-weight: 500;
+  }
+}

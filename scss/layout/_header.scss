@@ -1,0 +1,124 @@
+@use '../abstracts/mixins';
+
+.header {
+  --height: 62px;
+  position: sticky;
+  z-index: 98;
+  top: 0;
+  border-bottom: 1px solid var(--color-border-muted);
+  background: var(--color-bg-alt);
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--height);
+  }
+}
+
+.navbar {
+  &.show {
+    translate: 0;
+    ~ .overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @include mixins.screen(md) {
+    position: fixed;
+    z-index: 100;
+    inset: 0 0 0 40%;
+    padding: 24px;
+    background: var(--color-bg-alt);
+    translate: 100%;
+    transition: translate 0.3s ease;
+  }
+  @include mixins.screen(sm) {
+    inset: 0 0 0 20%;
+  }
+  &__top {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    @include mixins.screen(md) {
+      display: flex;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    @include mixins.screen(md) {
+      display: block;
+    }
+  }
+  &__item--active &__link {
+    color: var(--color-primary);
+    font-weight: 600;
+    &::after {
+      background: var(--color-primary);
+    }
+    @include mixins.screen(md) {
+      background: var(--color-bg);
+    }
+  }
+  &__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: var(--height);
+    padding-inline: 10px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+    &::before {
+      content: attr(title);
+      display: block;
+      height: 0;
+      font-weight: 600;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+    }
+    &:hover {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    @include mixins.screen(lg) {
+      padding-inline: 8px;
+    }
+    @include mixins.screen(md) {
+      height: auto;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: initial;
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  height: 100%;
+  padding-inline: 10px;
+  @include mixins.screen(md) {
+    display: block;
+  }
+  &__icon {
+    width: 26px;
+  }
+}

@@ -1,0 +1,33 @@
+@use "../abstracts/mixins";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 6px;
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
+  font-size: 1.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
+  &--outline {
+    border: 1.5px solid var(--color-accent);
+    color: var(--color-accent);
+    background: transparent;
+  }
+  &--rounded {
+    border-radius: 100rem;
+  }
+  &[disabled],
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
