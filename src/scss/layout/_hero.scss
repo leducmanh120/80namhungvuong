@@ -11,7 +11,7 @@
     flex: 1;
     min-height: 260px;
     border-radius: 16px;
-    background: url("/src/assets/img/khai-giang-nam-hoc-2025-2026-thpt-hung-vuong.jpg") center / cover no-repeat;
+    background: url("/img/khai-giang-nam-hoc-2025-2026-thpt-hung-vuong.jpg") center / cover no-repeat;
     overflow: hidden;
     @include mixins.screen(lg) {
       display: flex;

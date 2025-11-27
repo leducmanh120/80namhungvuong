@@ -1,3 +1,9 @@
+import $ from "jquery";
+import "slick-carousel";
+import "slick-carousel/slick/slick.css";
+import Masonry from "masonry-layout";
+import imagesLoaded from "imagesloaded";
+
 import "../scss/styles.scss";
 
 /* JS Toggle */
@@ -18,8 +24,10 @@ document.addEventListener("click", (e) => {
 (function () {
   "use strict";
 
-  const TARGET_DATE = new Date("2025-12-01T00:00:00");
   const COUNTDOWN_ELEMENT = document.getElementById("countdown");
+  if (!COUNTDOWN_ELEMENT) return;
+
+  const TARGET_DATE = new Date("2025-12-01T00:00:00");
 
   const daysElement = document.getElementById("cd-days");
   const hoursElement = document.getElementById("cd-hours");
@@ -137,3 +145,45 @@ document.addEventListener("click", (e) => {
   ensureAriaRelationships();
   activateTab(initialTab, false);
 })();
+
+/* Slick slider */
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = $(".image-slider");
+
+  if (sliders.length === 0) return;
+
+  sliders.slick({
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    prevArrow: `<button class="pull-left slick-prev"type=button><svg class=size-6 fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg><path d="M15.75 19.5 8.25 12l7.5-7.5"stroke-linecap=round stroke-linejoin=round /></svg></button>`,
+    nextArrow: `<button class="pull-right slick-next"type=button><svg class=size-6 fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg><path d="m8.25 4.5 7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></button>`,
+    responsive: [
+      {
+        breakpoint: 1023.98,
+        settings: {
+          dots: false,
+        },
+      },
+    ],
+  });
+});
+
+/* Initialize Masonry with imagesloaded */
+document.addEventListener("DOMContentLoaded", () => {
+  const allGrids = document.querySelectorAll(".masonry__grid");
+
+  if (allGrids.length === 0) return;
+
+  allGrids.forEach((grid) => {
+    const msnry = new Masonry(grid, {
+      itemSelector: ".masonry__item",
+      columnWidth: ".masonry__sizer",
+      percentPosition: true,
+    });
+
+    imagesLoaded(grid).on("progress", () => {
+      msnry.layout();
+    });
+  });
+});
